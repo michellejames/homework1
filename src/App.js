@@ -20,8 +20,8 @@ class App extends Component {
 
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/Counter1" exact component={Counter1} />
-            <Route path="/Counter2" exact component={Counter2} />
+            <Route path="/Counter1" component={Counter1} />
+            <Route path="/Counter2" component={Counter2} />
           </Switch>
 
         </div>
