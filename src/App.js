@@ -7,7 +7,7 @@ import Home from './Home';
 import Header from './Header';
 import Counter1 from './Counter1';
 import Counter2 from './Counter2';
-
+import CounterForm from './CounterForm';
 
 class App extends Component {
 
@@ -22,6 +22,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/Counter1" component={Counter1} />
             <Route path="/Counter2" component={Counter2} />
+            <Route path="/CounterForm" component={CounterForm} />
           </Switch>
 
         </div>

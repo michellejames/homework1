@@ -15,6 +15,7 @@ class Header extends Component {
             <NavLink exact activeClassName="selected" className="normal" to="/">Home</NavLink>
             <NavLink activeClassName="selected" className="normal" to="/Counter1">Counter 1</NavLink>
             <NavLink activeClassName="selected" className="normal" to="/Counter2">Counter 2</NavLink>
+            <NavLink activeClassName="selected" className="normal" to="/CounterForm">Counter Form</NavLink>
           </div>
 
 
