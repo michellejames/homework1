@@ -17,19 +17,19 @@ class Counter1 extends Component {
     }
 
     componentWillMount() {
-        console.log('Counter.componentWillMount');
+        console.log('Counter1.componentWillMount');
     }
 
     componentDidMount() {
-        console.log('Counter.componentDidMount');
+        console.log('Counter1.componentDidMount');
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('Counter.componentWillReceiveProps', nextProps);
+        console.log('Counter1.componentWillReceiveProps', nextProps);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log('Counter.shouldComponentUpdate', this.props, nextProps, this.state, nextState);
+        console.log('Counter1.shouldComponentUpdate', this.props, nextProps, this.state, nextState);
         // if (this.state.counter != nextState.counter) {
         //   return false;
         // }
@@ -37,15 +37,15 @@ class Counter1 extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        console.log('Counter.componentWillUpdate', nextProps, nextState);
+        console.log('Counter1.componentWillUpdate', nextProps, nextState);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('Counter.componentDidUpdate', prevProps, prevState);
+        console.log('Counter1.componentDidUpdate', prevProps, prevState);
     }
 
     componentWillUnmount() {
-        console.log('Counter.componentWillUnmount');
+        console.log('Counter1.componentWillUnmount');
     }
 
     increment() {
@@ -72,7 +72,7 @@ class Counter1 extends Component {
     reset() {
       console.log('reset()', this);
       this.setState({
-        counter: this.state.counter = 0,
+        counter: 0,
       })
     }
 

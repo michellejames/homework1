@@ -31,8 +31,8 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/form" component={FormWrapper} />
-            <Route path="/Counter1" component={Counter1} />
-            <Route path="/Counter2" component={Counter2} />
+            <Route path="/Counter1" component={() => CounterPage(1)} />
+            <Route path="/Counter2" component={() => CounterPage(2)}  />
             <Route path="/CounterForm" component={CounterForm} />
           </Switch>
 
