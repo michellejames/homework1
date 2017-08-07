@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './Counter.css';
 
-class Counter1 extends Component
-{
+class Counter1 extends Component {
     constructor(props) {
       super(props);
 
@@ -13,6 +14,38 @@ class Counter1 extends Component
       this.state = {
         counter: 0,
       };
+    }
+
+    componentWillMount() {
+        console.log('Counter.componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('Counter.componentDidMount');
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('Counter.componentWillReceiveProps', nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Counter.shouldComponentUpdate', this.props, nextProps, this.state, nextState);
+        // if (this.state.counter != nextState.counter) {
+        //   return false;
+        // }
+        return true;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log('Counter.componentWillUpdate', nextProps, nextState);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log('Counter.componentDidUpdate', prevProps, prevState);
+    }
+
+    componentWillUnmount() {
+        console.log('Counter.componentWillUnmount');
     }
 
     increment() {
@@ -46,6 +79,7 @@ class Counter1 extends Component
     render() {
 
       const { title } = this.props;
+      const { num } = this.props;
       const { counter } = this.state;
       
       return (
@@ -58,9 +92,11 @@ class Counter1 extends Component
             <button onClick={this.reset}>Reset</button>
        </div>
         );
-
     }
 }
 
+Counter1.propTypes = {
+  num: PropTypes.number.isRequired,
+};
 
 export default Counter1;

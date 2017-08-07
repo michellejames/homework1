@@ -26,16 +26,23 @@ class CounterForm extends Component
   		// const { counter } = this.state;
   		
   		return (
-	    	<div className="">
+	    	<div>
+
+	    	<h1>Counter Form </h1>
+
 	          <form>
-	          	
+	          	<label>Name the counter: </label>
 	          	<input type="text" placeholder="Name" />
+	          	<br/>
+	          	<br />
+	          	<label>Initial value for the counter: </label>
 	          	<input type="text" placeholder="Initial Value" />
+	          	<br />
 	          	<button type="submit">Submit</button>
 	          </form>
 	          <Counter1 />
-	          <Counter2 />
 	      	</div>
+	          //<Counter2 />
       );
 
     }
