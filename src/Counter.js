@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Counter.css';
 
-class Counter1 extends Component {
+class Counter extends Component {
     constructor(props) {
       super(props);
 
@@ -13,23 +13,24 @@ class Counter1 extends Component {
 
       this.state = {
         counter: 0,
+        name:'',
       };
     }
 
     componentWillMount() {
-        console.log('Counter1.componentWillMount');
+        console.log('Counter.componentWillMount');
     }
 
     componentDidMount() {
-        console.log('Counter1.componentDidMount');
+        console.log('Counter.componentDidMount');
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('Counter1.componentWillReceiveProps', nextProps);
+        console.log('Counter.componentWillReceiveProps', nextProps);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log('Counter1.shouldComponentUpdate', this.props, nextProps, this.state, nextState);
+        console.log('Counter.shouldComponentUpdate', this.props, nextProps, this.state, nextState);
         // if (this.state.counter != nextState.counter) {
         //   return false;
         // }
@@ -37,15 +38,15 @@ class Counter1 extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        console.log('Counter1.componentWillUpdate', nextProps, nextState);
+        console.log('Counter.componentWillUpdate', nextProps, nextState);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('Counter1.componentDidUpdate', prevProps, prevState);
+        console.log('Counter.componentDidUpdate', prevProps, prevState);
     }
 
     componentWillUnmount() {
-        console.log('Counter1.componentWillUnmount');
+        console.log('Counter.componentWillUnmount');
     }
 
     increment() {
@@ -78,8 +79,9 @@ class Counter1 extends Component {
 
     render() {
 
-      const { title } = this.props;
-      const { num } = this.props;
+      //const { title } = this.props;
+      //const { num } = this.props;
+      console.log(this.props.name)
       const { counter } = this.state;
       
       return (
@@ -95,8 +97,8 @@ class Counter1 extends Component {
     }
 }
 
-Counter1.propTypes = {
-  num: PropTypes.number.isRequired,
+Counter.propTypes = {
+  num: PropTypes.number,
 };
 
-export default Counter1;
+export default Counter;

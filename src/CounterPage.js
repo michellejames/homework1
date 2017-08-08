@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 
 import { Link } from "react-router-dom";
-import Counter1 from "./Counter1";
+import Counter from "./Counter";
 
 class CounterPage extends Component {
   render() {
@@ -11,7 +11,7 @@ class CounterPage extends Component {
 
     return (
       <div>
-        <Counter1 num={num} />
+        <Counter num={num} />
       </div>
     );
   }

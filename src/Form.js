@@ -68,7 +68,7 @@ class Form extends Component
             },
         })
         .then( response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 return response.text();
             }
             if (this.props.initialValue) {

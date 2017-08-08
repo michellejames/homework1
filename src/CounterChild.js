@@ -1,8 +1,8 @@
 import React from "react";
 
-import Counter1 from './Counter1';
+import Counter from './Counter';
 
-class CounterChild extends Counter1 {
+class CounterChild extends Counter {
   constructor(props) {
     console.log('CounterChild.constructor');
     super(props);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Counter1 from "./Counter1";
+import Counter from "./Counter";
 
 const KEY = 'greg-key3';
 
@@ -11,11 +11,13 @@ class CounterForm extends Component
         super(props);
 
         this.updateText = this.updateText.bind(this);
+        this.updateValue = this.updateValue.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
         console.log('CounterForm.constructor');
         this.state = {
             value: '',
+            name: ''
         };
     }
 
@@ -51,15 +53,17 @@ class CounterForm extends Component
     }
 
     updateText(event) {
-        const val = event.target.value;
-        console.log('CounterForm.updateText', val);
-        this.setState({value: val});
+
+        const nameUpdate = event.target.name;
+
+        console.log('CounterForm.updateText', nameUpdate);
+        this.setState({name: nameUpdate});
     }
 
     updateValue(event) {
-        const val = event.target.value;
-        console.log('CounterForm.updateValue', val);
-        this.setState({value: val});
+        const valueUpdate = event.target.value;
+        console.log('CounterForm.updateValue', valueUpdate);
+        this.setState({value: valueUpdate});
     }
 
     handleSubmit(event) {
@@ -76,7 +80,7 @@ class CounterForm extends Component
             },
         })
         .then( response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 return response.text();
             }
             if (this.props.initialValue) {
@@ -120,12 +124,12 @@ class CounterForm extends Component
 
   		return (
 	    	<div className="">
-		        <h2>{ this.props.title }</h2>
+		        <h2>Counter Form</h2>
 	            <hr/>
 
 		    	<form>
 		    		<label>Name the counter: </label>
-		    		<input type="text" onChange={this.updateText} value={this.state.value} />
+		    		<input type="text" onChange={this.updateText} name={this.state.name} />
 		    		<br />
 		    		<br />
 		    		<label>Initial value for the counter: </label>
@@ -135,21 +139,21 @@ class CounterForm extends Component
 	             	<button onClick={this.handleSubmit}>Send</button>
 		    		<hr />
 	            </form>
-	            <Counter1 />
+	            <Counter title={this.state.name} initialValue={this.state.value} />
             </div>
         );
 
     }
 }
 
-CounterForm.propTypes = {
-    title: PropTypes.string.isRequired,
-    initialValue: PropTypes.string.isRequired,
-};
+// CounterForm.propTypes = {
+//     title: PropTypes.string.isRequired,
+//     initialValue: PropTypes.string,
+// };
 
-CounterForm.defaultProps = {
-    title: 'My Component Title',
-};
+// CounterForm.defaultProps = {
+//     title: 'My Component Title',
+// };
 
 
 export default CounterForm;

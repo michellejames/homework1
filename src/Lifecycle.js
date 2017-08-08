@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Counter1 from './Counter1';
+import Counter from './Counter';
 import CounterChild from './CounterChild';
 
 class Lifecycle extends Component
@@ -48,7 +48,7 @@ class Lifecycle extends Component
 	    	<div className="">
 	         <h2>{ this.props.title }</h2>
              <hr/>
-             <Counter1 num={5} />
+             <Counter num={5} />
              <hr/>
              <CounterChild />
 	        </div>
@@ -57,13 +57,13 @@ class Lifecycle extends Component
     }
 }
 
-// Lifecycle.propTypes = {
-//     title: PropTypes.string.isRequired,
-// };
+Lifecycle.propTypes = {
+    title: PropTypes.string.isRequired,
+};
 
-// Lifecycle.defaultProps = {
-//     title: 'My Component Title',
-// };
+Lifecycle.defaultProps = {
+    title: 'My Component Title',
+};
 
 
 export default Lifecycle;

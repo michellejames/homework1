@@ -6,13 +6,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Header from './Header';
 import Form from "./Form";
-import Counter1 from './Counter1';
-import Counter2 from './Counter2';
-import Lifecycle from "./Lifecycle";
+import Counter from './Counter';
+//import Lifecycle from "./Lifecycle";
 import CounterForm from './CounterForm';
 
 const CounterPage = (num) => (
-  <Counter1 num={num} />
+  <Counter num={num} />
 );
 
 const FormWrapper = () => (
