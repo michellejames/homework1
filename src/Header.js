@@ -18,7 +18,6 @@ class Header extends Component {
             <NavLink activeClassName="selected" className="normal" to="/CounterForm">Counter Form</NavLink>
           </div>
 
-
         </div>
       );
 

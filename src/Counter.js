@@ -11,46 +11,55 @@ class Counter extends Component {
       this.decrement = this.decrement.bind(this);
       this.reset = this.reset.bind(this);
 
+      let startingVal = props.initialValue;
+      if (!startingVal) {
+        startingVal = 0;
+      }
       this.state = {
-        counter: 0,
-        name:'',
+        counter: startingVal,
       };
     }
 
-    componentWillMount() {
-        console.log('Counter.componentWillMount');
-    }
+    // componentWillMount() {
+    //     console.log('Counter.componentWillMount');
+    // }
 
-    componentDidMount() {
-        console.log('Counter.componentDidMount');
-    }
+    // componentDidMount() {
+    //     console.log('Counter.componentDidMount');
+    // }
 
     componentWillReceiveProps(nextProps) {
         console.log('Counter.componentWillReceiveProps', nextProps);
+
+        let startingVal = nextProps.initialValue;
+        if (!startingVal) {
+          startingVal = 0;
+        }
+        this.setState({
+          counter: startingVal,
+        });
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('Counter.shouldComponentUpdate', this.props, nextProps, this.state, nextState);
-        // if (this.state.counter != nextState.counter) {
-        //   return false;
-        // }
         return true;
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        console.log('Counter.componentWillUpdate', nextProps, nextState);
-    }
+    // componentWillUpdate(nextProps, nextState) {
+    //     console.log('Counter.componentWillUpdate', nextProps, nextState);
+    // }
 
-    componentDidUpdate(prevProps, prevState) {
-        console.log('Counter.componentDidUpdate', prevProps, prevState);
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log('Counter.componentDidUpdate', prevProps, prevState);
+    // }
 
-    componentWillUnmount() {
-        console.log('Counter.componentWillUnmount');
-    }
+    // componentWillUnmount() {
+    //     console.log('Counter.componentWillUnmount');
+    // }
 
     increment() {
       console.log('increment()', this);
+
       this.setState({
         counter: this.state.counter + 1,
       })
@@ -78,16 +87,15 @@ class Counter extends Component {
     }
 
     render() {
-
-      //const { title } = this.props;
-      //const { num } = this.props;
-      console.log(this.props.name)
+      const { title } = this.props;
+      console.log(this.props);
+      const { initialValue } = this.props;
       const { counter } = this.state;
       
       return (
         <div>
               <p className="counter-name">
-              Counter #1: {counter}
+              {title}: {counter}
               </p>
             <button onClick={this.decrement}>-</button>
             <button onClick={this.increment}>+</button>
@@ -98,7 +106,12 @@ class Counter extends Component {
 }
 
 Counter.propTypes = {
-  num: PropTypes.number,
+  title: PropTypes.string.isRequired,
+};
+
+Counter.defaultProps = {
+  title: 'My Counter',
+  initialValue: 0,
 };
 
 export default Counter;

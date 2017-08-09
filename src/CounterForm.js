@@ -1,39 +1,35 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
 import Counter from "./Counter";
 
-const KEY = 'greg-key3';
+const KEY = "webDevShelly";
 
 class CounterForm extends Component
 {
     constructor(props) {
         super(props);
 
-        this.updateText = this.updateText.bind(this);
+        this.updateName = this.updateName.bind(this);
         this.updateValue = this.updateValue.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        console.log('CounterForm.constructor');
         this.state = {
-            value: '',
-            name: ''
+            name: "My Counter",
+            value: "",
         };
     }
 
-    componentWillMount() {
-        console.log('CounterForm.componentWillMount');
-    }
+    // componentWillMount() {
+    //     console.log('CounterForm.componentWillMount');
+    // }
 
     componentDidMount() {
         console.log('CounterForm.componentDidMount');
-
         this.getData(KEY);
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('CounterForm.componentWillReceiveProps', nextProps);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('CounterForm.componentWillReceiveProps', nextProps);
+    // }
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('CounterForm.shouldComponentUpdate', nextProps, nextState);
@@ -41,46 +37,52 @@ class CounterForm extends Component
     }
 
     // componentWillUpdate(nextProps, nextState) {
-    //     console.log('Form.componentWillUpdate', nextProps, nextState);
+    //     console.log('CounterForm.componentWillUpdate', nextProps, nextState);
     // }
 
     // componentDidUpdate(prevProps, prevState) {
-    //     console.log('Form.componentDidUpdate', prevProps, prevState);
+    //     console.log('CounterForm.componentDidUpdate', prevProps, prevState);
     // }
 
-    componentWillUnmount() {
-        console.log('CounterForm.componentWillUnmount');
-    }
+    //componentWillUnmount() {
+    //     console.log('CounterForm.componentWillUnmount');
+    // }
 
-    updateText(event) {
+    updateName(event) {
 
         const nameUpdate = event.target.name;
+        const valueUpdate = event.target.value;
 
-        console.log('CounterForm.updateText', nameUpdate);
-        this.setState({name: nameUpdate});
+        this.setState({
+            [nameUpdate]: valueUpdate,
+        });
     }
 
     updateValue(event) {
-        const valueUpdate = event.target.value;
-        console.log('CounterForm.updateValue', valueUpdate);
-        this.setState({value: valueUpdate});
+        const nameUpdate = event.target.name;
+        const valueUpdate = parseInt(event.target.value);
+
+        this.setState({
+            [nameUpdate]: valueUpdate,
+        });
     }
 
     handleSubmit(event) {
         console.log('CounterForm.handleSubmit', event);
-        this.saveData(KEY, this.state.value);
+        this.saveData(KEY + "-name", this.state.name);
+        this.saveData(KEY + "-value", this.state.value.toString());
     }
 
     getData(key) {
         console.log('fetching data...', key);
-        fetch('http://circuslabs.net:3000/data/' + key, {
+        fetch('http://circuslabs.net:3000/data/' + KEY, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         .then( response => {
-            if (response.status === 200) {
+            if (response.status == 200) {
                 return response.text();
             }
             if (this.props.initialValue) {
@@ -119,41 +121,31 @@ class CounterForm extends Component
         });
     }
 
-  	render() {
-        console.log('CounterForm.render');
+    render() {
 
-  		return (
-	    	<div className="">
-		        <h2>Counter Form</h2>
-	            <hr/>
+        return (
+            <div className="">
+                <h2>Counter Form</h2>
+                <hr/>
 
-		    	<form>
-		    		<label>Name the counter: </label>
-		    		<input type="text" onChange={this.updateText} name={this.state.name} />
-		    		<br />
-		    		<br />
-		    		<label>Initial value for the counter: </label>
-		    		<input type="text" onChange={this.updateValue} value={this.state.value} />
-		    		<br />
-		    		<br />
-	             	<button onClick={this.handleSubmit}>Send</button>
-		    		<hr />
-	            </form>
-	            <Counter title={this.state.name} initialValue={this.state.value} />
+                <form>
+                    <label>Name the counter: </label>
+                    <input type="text" onChange={this.updateName} name="name" value={this.state.name} />
+                    <br />
+                    <br />
+                    <label>Initial value for the counter: </label>
+                    <input type="num" onChange={this.updateValue} name="value" value={this.state.value} />
+                    <br />
+                    <br />
+                    <button onClick={this.handleSubmit}>Send</button>
+                    <hr />
+                </form>
+                <Counter title={this.state.name} initialValue={this.state.value} />
             </div>
         );
 
     }
 }
-
-// CounterForm.propTypes = {
-//     title: PropTypes.string.isRequired,
-//     initialValue: PropTypes.string,
-// };
-
-// CounterForm.defaultProps = {
-//     title: 'My Component Title',
-// };
 
 
 export default CounterForm;
